@@ -1,92 +1,201 @@
-Exatamente. Se a ideia é **formatar o PC e depois conseguir rodar seu programa Python**, o mínimo necessário é:
+Claro. Vou ajustar o trecho para ficar com cara de **README.md de projeto**, mais organizado, profissional e fácil de seguir no Windows. Também corrigi os comandos que ficaram quebrados no texto.
 
-```text
-Windows recém-formatado
-        ↓
-Python
-        ↓
-pip
-        ↓
-yt-dlp
-        ↓
-FFmpeg
-        ↓
-seu programa .py
+# 🐍 Configuração do Python e yt-dlp no Windows
+
+Este guia explica como instalar e configurar o **Python**, o **pip** e o **yt-dlp** no Windows utilizando o **PowerShell**.
+
+---
+
+## 1. Instalar o Python
+
+Abra o **PowerShell** como usuário normal e execute:
+
+```powershell
+winget install Python.Python.3.13
 ```
 
-### Depois da formatação
+Aguarde a instalação terminar.
 
-Primeiro instale o **Python**. Durante a instalação, marque:
+### ⚠️ Se o comando apresentar erro
 
-```text
-☑ Add python.exe to PATH
-```
+Se aparecer alguma mensagem de erro durante a instalação, **não tente outros comandos aleatoriamente**.
 
-Depois abra o CMD e confira:
+Copie e envie exatamente a mensagem apresentada pelo PowerShell para identificar o problema e utilizar o comando correto.
 
-```bash
+---
+
+## 2. Reiniciar o PowerShell
+
+Depois que a instalação terminar:
+
+1. Feche completamente o PowerShell.
+2. Abra o PowerShell novamente.
+3. Verifique se o Python foi instalado corretamente.
+
+Execute:
+
+```powershell
 python --version
 ```
 
-Depois:
+O resultado esperado será parecido com:
 
-```bash
+```text
+Python 3.13.x
+```
+
+Se aparecer a versão do Python, a instalação foi concluída com sucesso.
+
+---
+
+## 3. Verificar o pip
+
+O `pip` é o gerenciador utilizado para instalar pacotes e bibliotecas do Python.
+
+Execute:
+
+```powershell
 python -m pip --version
 ```
 
-Se os dois funcionarem, o Python está pronto.
+O resultado deverá ser semelhante a:
 
-### Para o seu programa específico
+```text
+pip 25.x.x from ... (python 3.13)
+```
 
-Instale:
+---
 
-```bash
+## 4. Instalar o yt-dlp
+
+Com o Python e o pip funcionando, instale ou atualize o **yt-dlp**:
+
+```powershell
 python -m pip install -U yt-dlp
 ```
 
-E verifique:
+Aguarde a instalação terminar.
 
-```bash
+---
+
+## 5. Verificar o yt-dlp
+
+Depois da instalação, execute:
+
+```powershell
 python -m yt_dlp --version
 ```
 
-Depois precisa do **FFmpeg**:
-
-```bash
-ffmpeg -version
-```
-
-Se os três comandos funcionarem:
+Se aparecer um número de versão, por exemplo:
 
 ```text
-python --version       ✓
-python -m yt_dlp --version  ✓
-ffmpeg -version        ✓
+2026.x.x
 ```
 
-seu `youtube_downloader.py` já poderá ser executado com:
+o `yt-dlp` está instalado corretamente.
 
-```bash
-python youtube_downloader.py
+---
+
+## 6. Teste completo
+
+Execute os comandos abaixo, um por vez:
+
+```powershell
+python --version
 ```
 
-### Se quiser deixar ainda mais fácil
+```powershell
+python -m pip --version
+```
 
-Eu faria um único arquivo:
+```powershell
+python -m yt_dlp --version
+```
+
+Se os três comandos retornarem suas respectivas versões, o ambiente está pronto para executar os scripts Python do projeto.
+
+---
+
+## 🛠️ Solução de problemas
+
+### Python não é reconhecido
+
+Se aparecer algo parecido com:
 
 ```text
-INSTALAR_E_RODAR.bat
+'python' não é reconhecido como um comando interno ou externo
 ```
 
-Você dá **duplo clique** nele depois de formatar e ele:
+feche o PowerShell, abra novamente e tente:
 
-1. verifica se o Python existe;
-2. instala Python se não existir;
-3. configura o `PATH`;
-4. instala/atualiza `pip`;
-5. instala `yt-dlp`;
-6. instala FFmpeg;
-7. verifica tudo;
-8. executa seu `youtube_downloader.py`.
+```powershell
+py --version
+```
 
-Assim você não precisa ficar digitando comandos no CMD.
+Se `py` funcionar, também é possível executar o pip usando:
+
+```powershell
+py -m pip --version
+```
+
+E instalar o yt-dlp com:
+
+```powershell
+py -m pip install -U yt-dlp
+```
+
+### Winget não encontra o Python
+
+Primeiro pesquise os pacotes disponíveis:
+
+```powershell
+winget search Python
+```
+
+Depois procure pelo pacote oficial do Python e faça a instalação utilizando o ID correspondente.
+
+---
+
+## 🚀 Próximo passo
+
+Depois que Python, pip e yt-dlp estiverem funcionando, você poderá executar os scripts Python deste projeto.
+
+Para executar um arquivo Python:
+
+```powershell
+python nome_do_script.py
+```
+
+Exemplo:
+
+```powershell
+python main.py
+```
+
+---
+
+## 📌 Resumo rápido
+
+```powershell
+winget install Python.Python.3.13
+```
+
+Feche e abra o PowerShell novamente.
+
+```powershell
+python --version
+```
+
+```powershell
+python -m pip --version
+```
+
+```powershell
+python -m pip install -U yt-dlp
+```
+
+```powershell
+python -m yt_dlp --version
+```
+
+Se todos os comandos funcionarem, o ambiente Python está pronto.
