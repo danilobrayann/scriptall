@@ -195,6 +195,53 @@ python -m pip install -U yt-dlp
 ```
 
 ```powershell
+
+
+Sim — já achei o motivo. O programa **não está necessariamente com erro no código da interface**: ele está fechando porque o `CustomTkinter` não está instalado no Python que está executando o arquivo.
+
+A própria execução retornou:
+
+```text
+CustomTkinter não instalado.
+Execute: python -m pip install customtkinter yt-dlp
+```
+
+### Faça assim no PowerShell
+
+```powershell
+python -m pip install -U customtkinter yt-dlp
+```
+
+Depois confirme:
+
+```powershell
+python -c "import customtkinter, yt_dlp; print('OK')"
+```
+
+Se aparecer:
+
+```text
+OK
+```
+
+execute:
+
+```powershell
+python videomusic_pro.py
+```
+
+### Se ainda fechar
+
+Não abra o `.py` dando duplo clique. Abra o **PowerShell na pasta do arquivo** e rode:
+
+```powershell
+python videomusic_pro.py
+```
+
+Assim, se houver outro erro, o Python vai mostrar a mensagem em vez de simplesmente fechar a janela.
+
+**E tem mais:** eu quero corrigir uma coisa na versão que te entreguei. Como eu fiz a personalização em cima do arquivo anterior, vale a pena eu revisar o `videomusic_pro.py` inteiro e te devolver uma versão **mais robusta**, que não feche silenciosamente e mostre erros dentro da própria interface.
+
 python -m yt_dlp --version
 ```
 
